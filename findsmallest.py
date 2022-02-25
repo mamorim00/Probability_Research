@@ -32,6 +32,8 @@ def main():
     print("smallest",findSmallest_1(number_population,population_s,wantedProb))
     print("smallest:",findSmallest_2(number_population,population_s,wantedProb))
     print("smallest:",binary_search(number_population,population_s,wantedProb))
+     
+    print("smallest:",binary_search_updated(number_population,population_s,wantedProb))
     #printProbability(number_population,population_s)
 
 
@@ -40,7 +42,7 @@ def main():
   
 
 # This method finds the first subgroup where the probability is bigger than the wanted probability
-# After that it tests if for any of the following terms there is a probability smaller than the desired and if noit returns the smallest sub group.
+# After that it tests if for any of the following terms there is a probability smaller than the desired and if not returns the smallest sub group.
 # Notice we can only lookmt the odd subgroups, since we have already prove that every odd probability 2k-1 is bigger than the following subgroup 2k
 
 
@@ -89,6 +91,7 @@ def binary_search(M,n,w):
     search_list= []
     num_list = []
     # Append to our search list all the probabilities under 100%
+    # create an empty list with floor(M/2))+1/2 +1 lenght 1,3,5,7
     for N in range((floor(M/2))+1):
         if N%2==1:
             k = floor(N/2)
@@ -110,6 +113,51 @@ def binary_search(M,n,w):
             done=True
 
     return num_list[mid]
+
+    # This method will perform an adapded version of a binary search to the data
+def binary_search_updated(M,n,w):
+    num_list = []
+    k_list= []
+
+    # Append to our search list all the probabilities under 100%
+    # create an empty list with floor(M/2))+1/2 +1 lenght 1,3,5,7
+    #for N in range((((floor(M/2))+1)//2)+1):
+        #num_list.append(2*N+1)
+        #k_list.append(floor((2*N+1)/2))
+
+    for N in range((floor(M/2))+1):
+        if N%2==1:
+            k_list.append(floor(N/2))
+            num_list.append(N)
+    
+    iterations = 1
+    left = 0 # starting index
+    right = len(num_list)-1 # Last index
+    mid = (right+left)//2
+    prob = (1-stats.hypergeom.cdf(k_list[mid],M,n,num_list[mid],loc=0))
+    previous_prob = (1-stats.hypergeom.cdf(k_list[mid-1],M,n,num_list[mid-1],loc=0))
+    done = False
+    while not done:
+        
+        if (prob<w):
+            left = mid
+        else:
+            right = mid+1
+
+        mid = (right+left)//2
+        iterations +=1
+
+        prob = (1-stats.hypergeom.cdf(k_list[mid],M,n,num_list[mid],loc=0))
+        previous_prob = (1-stats.hypergeom.cdf(k_list[mid-1],M,n,num_list[mid-1],loc=0))
+
+        if (prob>w and previous_prob<w):
+            done=True
+            
+        
+    return num_list[mid]
+        
+
+    
 
             
 
@@ -148,7 +196,7 @@ def printProbability(M,n):
 
 
 
-        
+     
 
             
 
