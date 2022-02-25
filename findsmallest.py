@@ -31,8 +31,8 @@ def main():
     wantedProb = float(input("Chosse the minumum probability wanted"))
     print("smallest",findSmallest_1(number_population,population_s,wantedProb))
     print("smallest:",findSmallest_2(number_population,population_s,wantedProb))
+    print("smallest:",binary_search(number_population,population_s,wantedProb))
     #printProbability(number_population,population_s)
-    print(binary_search(number_population,population_s,wantedProb))
 
 
             
@@ -87,10 +87,13 @@ def findSmallest_2(M,n,w):
 # This method will perform an adapded version of a binary search to the data
 def binary_search(M,n,w):
     search_list= []
+    num_list = []
     # Append to our search list all the probabilities under 100%
     for N in range((floor(M/2))+1):
-        k = floor(N/2)
-        search_list.append((1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
+        if N%2==1:
+            k = floor(N/2)
+            search_list.append((1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
+            num_list.append(N)
     iterations = 1
     left = 0 # starting index
     right = len(search_list)-1 # Last index
@@ -106,7 +109,7 @@ def binary_search(M,n,w):
         if (search_list[mid]>w and search_list[mid-1]<w):
             done=True
 
-    return mid
+    return num_list[mid]
 
             
 
