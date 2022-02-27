@@ -198,6 +198,7 @@ def probIsOne(M,n,w):
     return True if M*w == n else False
 
 
+# Error when the number is close to 1
 
 print(binary_search_updated2(1000,800,.9))
 print("RIGHT ONE",findSmallest_1(1000,800,.9))
