@@ -159,9 +159,6 @@ def binary_search_updated2(M,n,w):
             
 
 
-
-
-
 # Our m is number_popilation and our 
 def printProbability(M,n):
     done = False
@@ -200,5 +197,5 @@ def probIsOne(M,n,w):
 
 # Error when the number is close to 1
 
-print(binary_search_updated2(1000,800,.70))
-print("RIGHT ONE",findSmallest_1(1000,800,.70))
+#print(binary_search_updated2(1000,800,.70))
+#print("RIGHT ONE",findSmallest_1(1000,800,.70))
