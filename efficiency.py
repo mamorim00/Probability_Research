@@ -20,10 +20,13 @@ import timeit
 # times we execute this function
 input_array =[[1000000000000,800000000000,.90],[100,70,.95],[50,40,.80]]
 findSmallest_time=[]
+findSmallest_time2=[]
 
 for i in range (len(input_array)):
     findSmallest_time.append(timeit.timeit(lambda:findSmallest_1(input_array[i][0],input_array[i][1],input_array[i][2]), number=20))
+    findSmallest_time2.append(timeit.timeit(lambda:findSmallest_2(input_array[i][0],input_array[i][1],input_array[i][2]), number=20))
     #print(finSammlest_time)#binary_search_time = timeit.timeit(lambda:binary_search(100,70,.95), number=100)
     
 # printing the execution time
 print(findSmallest_time)
+print(findSmallest_time2)
