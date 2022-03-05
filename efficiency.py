@@ -18,7 +18,7 @@ import timeit
 # expression to get the execution time of
 # the function, number defines how many
 # times we execute this function
-input_array =[[1000000000000,800000000000,.90],[100,70,.95],[50,40,.80]]
+input_array =[[1000000000000,600000000000,.95],[100,70,.95],[50,40,.80]]
 findSmallest_time=[]
 findSmallest_time2=[]
 

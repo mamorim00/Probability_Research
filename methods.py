@@ -10,6 +10,7 @@ from scipy.stats import hypergeom
 # Notice we can only lookmt the odd subgroups, since we have already prove that every odd probability 2k-1 is bigger than the following subgroup 2k
 
 
+
 def findSmallest_1(M,n,w):
     smallestNum = M
     maxProb = 0
@@ -121,7 +122,9 @@ def binary_search_updated(M,n,w):
     return num_list[mid]
         
 
-    
+# The binary search method is not efficient for
+#  large numbers begause the midpoint requires the calculation 
+# of a hypergeometric with a big number.
 def binary_search_updated2(M,n,w):
     if probIsOne(M,n,w): return 1 
 
