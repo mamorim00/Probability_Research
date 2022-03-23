@@ -126,7 +126,8 @@ def binary_search_updated(M,n,w):
 #  large numbers begause the midpoint requires the calculation 
 # of a hypergeometric with a big number.
 def binary_search_updated2(M,n,w):
-    if probIsOne(M,n,w): return 1 
+    if probIsOne(M,n,w): return 1
+    if probIsThree(M,n,w): return 3 
 
     # Append to our search list all the probabilities under 100%
     # create an empty list with floor(M/2))+1/2 +1 lenght 1,3,5,7
@@ -159,7 +160,51 @@ def binary_search_updated2(M,n,w):
             done=True
         
     return odd
+
+def five_percent_search(M,n,w):
+    if probIsOne(M,n,w): return 1 
+    if probIsThree(M,n,w): return 3
+
+    # Pick the 5th percent value for the list and start a search there
+
+    iterations = 1
+    left = 1 # starting index
+    right = (floor(M/2)//2) # Last index
+    percent = 0.05
+    right_temp = percent*M # Last index
+    mid = (right_temp+left)//2
+    odd = 2 * mid + 1 # Our odd value 
+    prob = (1-stats.hypergeom.cdf(floor(odd/2),M,n,odd,loc=0))
+    done = False
+    while (prob<w):
+        print(prob)
+        print(odd)
+        percent+= 0.05 # increase the probability .05 until we find the bigger one
+        right_temp = int(percent*M)# Last index
+        mid = (right_temp+left)//2
+        odd = 2 * mid + 1 # Our odd value
+        prob = (1-stats.hypergeom.cdf(floor(odd/2),M,n,odd,loc=0))
+
+    while not done:
+        if (prob<w):
+            left = mid
+        else:
+            right = mid+1
+
+        mid = (right+left)//2
+        iterations +=1
+        odd = 2 * mid + 1
+        prob = (1-stats.hypergeom.cdf(floor(odd/2),M,n,odd,loc=0))
+        previous_prob = (1-stats.hypergeom.cdf(floor((odd-2)/2),M,n,odd-2,loc=0))
+       
+        if ((prob>w and previous_prob<w)):
+            done=True
+        
+    return odd
+
+
             
+
 
 
 # Our m is number_popilation and our 
@@ -197,8 +242,11 @@ def printProbability(M,n):
 def probIsOne(M,n,w):
     return True if M*w <= n else False
 
+def probIsThree(M,n,w):
+    return True if (1-stats.hypergeom.cdf(floor(3/2),M,n,3,loc=0))>w  else False
 
 # Error when the number is close to 1
 
-#print(binary_search_updated2(1000,800,.70))
-#print("RIGHT ONE",findSmallest_2(1000,800,.70))
+#print(binary_search_updated2(1000,800,.87))
+#print("RIGHT ONE",findSmallest_2(1000,800,.87))
+#print(five_percent_search(1000,800,.83))#
