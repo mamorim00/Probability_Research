@@ -210,7 +210,7 @@ def five_percent_search(M,n,w):
 # Our m is number_popilation and our 
 def printProbability(M,n):
     done = False
-    M_range= int((2*M*(1-(n/100)))+1)
+    M_range= int((2*(M-n))+1)
     while (not done):
         mode = input(" Please choose the subgroups you want to look at (1-All , 2-ODDS, 3-EVENS, 4-NONE) and press enter: ")
         if mode =="4":

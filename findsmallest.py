@@ -16,10 +16,10 @@ def main():
     # input smallest probability wanted
     wantedProb = float(input("Chosse the minumum probability wanted"))
     print("smallest",findSmallest_1(number_population,population_s,wantedProb))
-    print("smallest:",findSmallest_2(number_population,population_s,wantedProb))
+    #print("smallest:",findSmallest_2(number_population,population_s,wantedProb))
     #print("smallest:",binary_search(number_population,population_s,wantedProb))
      
-    print("smallest:",binary_search_updated(number_population,population_s,wantedProb))
+    #print("smallest:",binary_search_updated(number_population,population_s,wantedProb))
     printProbability(number_population,population_s)
   
 
