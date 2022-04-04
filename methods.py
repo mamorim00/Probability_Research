@@ -5,6 +5,7 @@
 from math import floor
 from scipy import stats
 from scipy.stats import hypergeom
+
 # This method finds the first subgroup where the probability is bigger than the wanted probability
 # After that it tests if for any of the following terms there is a probability smaller than the desired and if not returns the smallest sub group.
 # Notice we can only lookmt the odd subgroups, since we have already prove that every odd probability 2k-1 is bigger than the following subgroup 2k
@@ -134,8 +135,6 @@ def binary_search_updated2(M,n,w):
     #for N in range((((floor(M/2))+1)//2)+1):
         #num_list.append(2*N+1)
         #k_list.append(floor((2*N+1)/2))
-
- 
     
     iterations = 1
     left = 1 # starting index
@@ -219,19 +218,25 @@ def printProbability(M,n):
             # We can
             for N in range (M_range):
                 k = floor(N/2)
-                print("For N",N,"Prob is:",(1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
+                prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
+                print("For N",N,"Prob is:",prob)
+                if prob==1: break
                 #print("For N",N,"Prob binom is:",(stats.binom.cdf(k,n,.7,)))
     
         elif (mode=="2"):
             for N in range (M_range):
                 k = floor(N/2)
                 if (N%2!=0):
-                    print("For N",N,"Prob is:",(1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
+                    prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
+                    print("For N",N,"Prob is:",prob)
+                if prob==1: break
         if (mode=="3"):
             for N in range (M_range):
                 k = floor(N/2)
                 if (N%2==0):
-                    print("For N",N,"Prob is:",(1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
+                    prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
+                    print("For N",N,"Prob is:",prob)
+                if prob==1: break
         keepgoing = input("Do you want to print anything else? Press y to keep going or any other key to stop")
         if (keepgoing != "y"):
             done = True
