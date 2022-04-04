@@ -229,14 +229,14 @@ def printProbability(M,n):
                 if (N%2!=0):
                     prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
                     print("For N",N,"Prob is:",prob)
-                if prob==1: break
+                    if prob==1: break
         if (mode=="3"):
             for N in range (M_range):
                 k = floor(N/2)
                 if (N%2==0):
                     prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
                     print("For N",N,"Prob is:",prob)
-                if prob==1: break
+                    if prob==1: break
         keepgoing = input("Do you want to print anything else? Press y to keep going or any other key to stop")
         if (keepgoing != "y"):
             done = True

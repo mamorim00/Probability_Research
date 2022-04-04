@@ -12,10 +12,11 @@ def main():
 
     #Population_s: is the number of successes in the population.
     population_s = int(input("Choose the number os successes in the population:"))
-
+    
     # input smallest probability wanted
     wantedProb = float(input("Chosse the minumum probability wanted from 0.5 to 1"))
     print("smallest",findSmallest_2(number_population,population_s,wantedProb))
+    print("smallest",findSmallest_1(number_population,population_s,wantedProb))
     #print("smallest:",findSmallest_2(number_population,population_s,wantedProb))
     #print("smallest:",binary_search(number_population,population_s,wantedProb))
      
@@ -25,6 +26,7 @@ def main():
 
     
 main()
+
 
 
 
