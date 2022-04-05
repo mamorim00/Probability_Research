@@ -124,7 +124,7 @@ def binary_search_updated(M,n,w):
         
 
 # The binary search method is not efficient for
-#  large numbers begause the midpoint requires the calculation 
+#  large numbers because the midpoint requires the calculation 
 # of a hypergeometric with a big number.
 def binary_search_updated2(M,n,w):
     if probIsOne(M,n,w): return 1
@@ -176,8 +176,6 @@ def five_percent_search(M,n,w):
     prob = (1-stats.hypergeom.cdf(floor(odd/2),M,n,odd,loc=0))
     done = False
     while (prob<w):
-        print(prob)
-        print(odd)
         percent+= 0.05 # increase the probability .05 until we find the bigger one
         right_temp = int(percent*M)# Last index
         mid = (right_temp+left)//2
