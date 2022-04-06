@@ -1,4 +1,4 @@
-# Probability_Research
+# Using probability to reduce the size of a voting body
 
 Suppose a large group of people, such as a university faculty, traditionally makes decisions by meeting together and voting. Because of the COVID-19 pandemic, however, large group meetings have become impractical. Having a relatively small subset of the group meet and take votes would be safer and easier to organize. The purpose of this research is to use probability theory to choose the size of this subset. We assume the entire group votes for one of two options, where the winning option is chosen by a large majority. Our research involves the study of the hypergeometric probability distribution and leads to a computer algorithm for determining the subset size. We will determine the smallest subset size that guarantees that the subset has a high probability of voting for the same option as the entire group. 
 
