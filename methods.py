@@ -129,12 +129,6 @@ def binary_search_updated(M,n,w):
 def binary_search_updated2(M,n,w):
     if probIsOne(M,n,w): return 1
     if probIsThree(M,n,w): return 3 
-
-    # Append to our search list all the probabilities under 100%
-    # create an empty list with floor(M/2))+1/2 +1 lenght 1,3,5,7
-    #for N in range((((floor(M/2))+1)//2)+1):
-        #num_list.append(2*N+1)
-        #k_list.append(floor((2*N+1)/2))
     
     iterations = 1
     left = 1 # starting index
@@ -204,7 +198,8 @@ def five_percent_search(M,n,w):
 
 
 
-# Our m is number_popilation and our 
+# Our M is number_popilation and our 
+
 def printProbability(M,n):
     done = False
     M_range= int((2*(M-n))+1)
@@ -242,14 +237,11 @@ def printProbability(M,n):
 
 
 
+# Check fast if the smallest number is 1 or 3 to fix a problem in the binary search
+
 def probIsOne(M,n,w):
     return True if M*w <= n else False
 
 def probIsThree(M,n,w):
     return True if (1-stats.hypergeom.cdf(floor(3/2),M,n,3,loc=0))>w  else False
 
-# Error when the number is close to 1
-
-#print(binary_search_updated2(1000,800,.87))
-#print("RIGHT ONE",findSmallest_2(1000,800,.87))
-#print(five_percent_search(1000,800,.83))#

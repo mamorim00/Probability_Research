@@ -4,10 +4,7 @@ from timeit import Timer
 from methods import binary_search,binary_search_updated, binary_search_updated2,findSmallest_1,findSmallest_2,five_percent_search
 
 
-""" binary_search(100,70,.95)
-binary_search_updated(100,70,.95)
-findSmallest_1(100,70,.95)
-findSmallest_2(100,70,.95) """
+# Exploring how the different methods perform with different kinds of inputs
 
 
 # importing the module
