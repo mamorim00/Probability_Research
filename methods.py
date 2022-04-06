@@ -212,7 +212,7 @@ def printProbability(M,n):
             for N in range (M_range):
                 k = floor(N/2)
                 prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
-                print("For N",N,"Prob is:",prob)
+                print("For N=",N,"Prob is:",prob)
                 if prob==1: break
                 #print("For N",N,"Prob binom is:",(stats.binom.cdf(k,n,.7,)))
     
@@ -221,14 +221,14 @@ def printProbability(M,n):
                 k = floor(N/2)
                 if (N%2!=0):
                     prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
-                    print("For N",N,"Prob is:",prob)
+                    print("For N=",N,"Prob is:",prob)
                     if prob==1: break
         if (mode=="3"):
             for N in range (M_range):
                 k = floor(N/2)
                 if (N%2==0):
                     prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
-                    print("For N",N,"Prob is:",prob)
+                    print("For N=",N,"Prob is:",prob)
                     if prob==1: break
         keepgoing = input("Do you want to print anything else? Press y to keep going or any other key to stop")
         if (keepgoing != "y"):

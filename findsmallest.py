@@ -21,7 +21,7 @@ def main():
     while (wantedProb<.50 or wantedProb>1):
         print("Please enter a value between 0.5 and 1")
         population_s = float(input("Chosse the minumum probability wanted from 0.5 to 1: "))
-    print("smallest",findSmallest_2(number_population,population_s,wantedProb))
+    print("Smallest subgroup is: ",findSmallest_2(number_population,population_s,wantedProb))
 
     printProbability(number_population,population_s)
   
