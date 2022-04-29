@@ -43,12 +43,9 @@ def findSmallest_2(M,n,w):
         if N%2==1:
 
             k = floor(N/2)
-            #print("For N",N,"Prob is:",(1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
-        # check if the probability of a subgroup of size N is bigger than the wanted probability
+            # check if the probability of a subgroup of size N is bigger than the wanted probability
             if ((1-stats.hypergeom.cdf(k,M,n,N,loc=0)))> w:
                 smallestNum = N
-                #print("For N",N,"Prob is:",(1-stats.hypergeom.cdf(k,M,n,N,loc=0)))
-                #print(smallestNum)
                 return smallestNum
 
 
@@ -85,11 +82,6 @@ def binary_search_updated(M,n,w):
     num_list = []
     k_list= []
 
-    # Append to our search list all the probabilities under 100%
-    # create an empty list with floor(M/2))+1/2 +1 lenght 1,3,5,7
-    #for N in range((((floor(M/2))+1)//2)+1):
-        #num_list.append(2*N+1)
-        #k_list.append(floor((2*N+1)/2))
 
     for N in range((floor(M/2))+1):
         if N%2==1:
@@ -207,14 +199,13 @@ def printProbability(M,n):
         mode = input(" Please choose the subgroups you want to look at (1-All , 2-ODDS, 3-EVENS, 4-NONE) and press enter: ")
         if mode =="4":
             return
-        elif mode == "1":
+        elif (mode == "1"):
             # We can
             for N in range (M_range):
                 k = floor(N/2)
                 prob =1-stats.hypergeom.cdf(k,M,n,N,loc=0)
                 print("For N=",N,"Prob is:",prob)
                 if prob==1: break
-                #print("For N",N,"Prob binom is:",(stats.binom.cdf(k,n,.7,)))
     
         elif (mode=="2"):
             for N in range (M_range):
@@ -237,7 +228,7 @@ def printProbability(M,n):
 
 
 
-# Check fast if the smallest number is 1 or 3 to fix a problem in the binary search
+# Check fast if the smallest number is 1 or 3 to fix a problem in the binary search 
 
 def probIsOne(M,n,w):
     return True if M*w <= n else False
